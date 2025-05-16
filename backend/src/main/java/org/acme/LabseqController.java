@@ -2,10 +2,7 @@ package org.acme;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import org.acme.services.LabseqService;
 
@@ -25,6 +22,10 @@ public class LabseqController {
     @Produces(MediaType.APPLICATION_JSON)
     public BigInteger labseqCalculation(@PathParam("n") BigInteger n) {
         System.out.println(n);
+
+        if(n.compareTo(BigInteger.ZERO)<0){
+            throw new WebApplicationException("Input must be non-negative", 400);
+        }
         return labseqService.labseqCalculation(n);
     }
 
