@@ -17,8 +17,10 @@ public class LabseqServiceImpl implements LabseqService {
 
     @Inject
     RedisCache cache;
+
     /**
      * Method to calculate the nth value of the labseq sequence
+     *
      * @param n the index of the sequence value to be returned
      * @return the value present at index n in the labseq sequence, calculated or retrieved from Redis cache
      */
@@ -69,12 +71,12 @@ public class LabseqServiceImpl implements LabseqService {
                 Optional<BigInteger> checkForValueFromCache = cache.get(i.toString());
                 if (checkForValueFromCache.isPresent()) {
                     // Use the cached value if it exists
-                   newValue = checkForValueFromCache.get();
+                    newValue = checkForValueFromCache.get();
                 } else {
                     // Calculate the new value
                     newValue = sequenceList.get(i.intValue() - 4).add(sequenceList.get(i.intValue() - 3));
                     // save it to the cache for future calculations
-                    cache.set(i.toString(),newValue);
+                    cache.set(i.toString(), newValue);
                 }
                 sequenceList.add(newValue);
             }

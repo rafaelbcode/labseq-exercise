@@ -10,3 +10,4 @@ public interface LabseqService {
     BigInteger labseqCalculation(BigInteger n);
 
 }
+
