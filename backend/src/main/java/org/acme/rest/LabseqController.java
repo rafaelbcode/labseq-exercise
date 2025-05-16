@@ -37,7 +37,7 @@ public class LabseqController {
         } catch (IllegalArgumentException e) {
             throw new WebApplicationException(
                 Response.status(Response.Status.BAD_REQUEST)
-                        .entity("Input 'n' must be a non-negative value")
+                        .entity(e.getMessage())
                         .build()
             );
         }

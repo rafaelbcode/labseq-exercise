@@ -28,7 +28,7 @@ public class LabseqServiceImpl implements LabseqService {
     public BigInteger labseqCalculation(BigInteger n) {
         // Throw an exception if a negative value is received
         if (n.compareTo(BigInteger.ZERO) < 0) {
-            throw new IllegalArgumentException("Input must be non-negative");
+            throw new IllegalArgumentException("Input 'n' must be non-negative");
         }
 
         // Check the cache in case the value has already been calculated
