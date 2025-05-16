@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.acme.rest","l":"LabseqController"},{"p":"org.acme.services","l":"LabseqService"},{"p":"org.acme.services","l":"LabseqServiceImpl"},{"p":"org.acme.cache","l":"RedisCache"},{"p":"org.acme.cache","l":"RedisCacheImpl"}];updateSearchResults();
