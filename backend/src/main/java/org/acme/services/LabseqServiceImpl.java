@@ -17,11 +17,10 @@ public class LabseqServiceImpl implements LabseqService {
 
     @Inject
     RedisCache cache;
-
     /**
      * Method to calculate the nth value of the labseq sequence
-     * @param n the index of the sequence value to be return
-     * @return the value present at index n in the labseq sequence
+     * @param n the index of the sequence value to be returned
+     * @return the value present at index n in the labseq sequence, calculated or retrieved from Redis cache
      */
     @Override
     public BigInteger labseqCalculation(BigInteger n) {
