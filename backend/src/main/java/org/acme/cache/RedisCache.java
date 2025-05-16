@@ -1,47 +1,23 @@
 package org.acme.cache;
 
-import io.quarkus.redis.datasource.RedisDataSource;
-import io.quarkus.redis.datasource.value.ValueCommands;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-
 import java.math.BigInteger;
 import java.util.Optional;
 
 /**
- * Cache class implemented using RedisDataSource, used to store labseq values to increase performance
+ * Interface class for RedisCache, to store and retrieve values from in key,pair format
  */
-@ApplicationScoped
-public class RedisCache {
-
-    private ValueCommands<String, BigInteger> commands;
-
-    /**
-     * Constructor method to inject the RedisDataSource
-     * @param dataSource the RedisDataSource
-     */
-    @Inject
-    public RedisCache(RedisDataSource dataSource) {
-        this.commands = dataSource.value(BigInteger.class);
-    }
-
+public interface RedisCache {
     /**
      * Method to retrieve a cached BigInteger value
      * @param key the String that represents the key
      * @return the BigInteger value linked to the key
      */
-    public Optional<BigInteger> get(String key) {
-        return Optional.ofNullable(commands.get(key));
-    }
+    Optional<BigInteger> get(String key);
 
     /**
      * Method to insert a key,value pair into the cache
      * @param key the String representing the key
      * @param value the BigInteger value
      */
-    public void set(String key, BigInteger value){
-        commands.set(key,value);
-    }
-
-
+    void set(String key, BigInteger value);
 }
