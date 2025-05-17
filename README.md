@@ -72,7 +72,7 @@ Also needs Redis running locally (`docker run redis` or via Redis Desktop).
 ### Angular
 
 Angular uses the environment file:
-* `src/environments/environment.ts`: for local dev (`localhost:8080`)
+* `src/environments/environment.ts`: for local dev and prod(`localhost:8080`)
 
 
 ### Quarkus
