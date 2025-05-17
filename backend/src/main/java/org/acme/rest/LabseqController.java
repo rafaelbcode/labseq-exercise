@@ -1,5 +1,6 @@
 package org.acme.rest;
 
+import io.quarkus.runtime.console.ConsoleRuntimeConfig;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -12,6 +13,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 
 import java.math.BigInteger;
+import java.util.Map;
 
 /**
  * REST Controller that exposes the endpoint to calculate labseq sequence values
@@ -23,6 +25,8 @@ public class LabseqController {
 
     @Inject
     LabseqService labseqService;
+    @Inject
+    ConsoleRuntimeConfig consoleRuntimeConfig;
 
     /**
      * Endpoint that returns the nth labseq number
@@ -40,12 +44,13 @@ public class LabseqController {
     @GET
     @Path("/{n}")
     @Produces(MediaType.APPLICATION_JSON)
-    public BigInteger labseqCalculation(
+    public Map<String, String> labseqCalculation(
             @Parameter(name = "n", description = "Index of the labseq sequence, non-negative integer")
             @PathParam("n") BigInteger n) {
 
         try {
-            return labseqService.labseqCalculation(n);
+            System.out.println(n.toString());
+            return Map.of("result", labseqService.labseqCalculation(n).toString());
         } catch (IllegalArgumentException e) {
             throw new WebApplicationException(
                 Response.status(Response.Status.BAD_REQUEST)

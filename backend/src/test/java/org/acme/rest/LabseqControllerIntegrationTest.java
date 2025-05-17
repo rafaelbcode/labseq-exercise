@@ -24,7 +24,7 @@ class LabseqControllerIntegrationTest {
                 .when().get("/labseq/0")
                 .then()
                 .statusCode(200)
-                .body(equalTo("0"));
+                .body("result", equalTo("0"));
     }
 
     /**
@@ -36,7 +36,7 @@ class LabseqControllerIntegrationTest {
                 .when().get("/labseq/1")
                 .then()
                 .statusCode(200)
-                .body(equalTo("1"));
+                .body("result", equalTo("1"));
     }
 
 
@@ -49,7 +49,7 @@ class LabseqControllerIntegrationTest {
                 .when().get("/labseq/2")
                 .then()
                 .statusCode(200)
-                .body(equalTo("0"));
+                .body("result", equalTo("0"));
     }
 
     /**
@@ -61,7 +61,7 @@ class LabseqControllerIntegrationTest {
                 .when().get("/labseq/3")
                 .then()
                 .statusCode(200)
-                .body(equalTo("1"));
+                .body("result", equalTo("1"));
     }
 
     /**
@@ -73,7 +73,7 @@ class LabseqControllerIntegrationTest {
                 .when().get("/labseq/10")
                 .then()
                 .statusCode(200)
-                .body(equalTo("3"));
+                .body("result", equalTo("3"));
     }
 
     /**
