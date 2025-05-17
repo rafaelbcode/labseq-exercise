@@ -1,0 +1,24 @@
+<main>
+  <header class="brand-name">
+  <h1>Labseq sequence calculator</h1>
+  </header>
+  <section>
+    <form (ngSubmit)="onCalculate()">
+      <input id="labseqIndex"
+             type="text"
+             [formControl]="labseqIndex"
+             placeholder="Insert labseq sequence index" />
+      <button class="primary" type="button">Calculate</button>
+    </form>
+  </section>
+  <section class="results">
+    <div *ngIf="isLoading">Loading...</div>
+
+    <div *ngIf="calculationResult !== null && calculationResult !== undefined">
+      <pre>The index n = {{labseqIndex.value}} has value:</pre>
+      <pre>{{ calculationResult }}</pre>
+    </div>
+  </section>
+
+</main>
+
