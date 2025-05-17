@@ -2,13 +2,14 @@ import {Component, inject, Injectable} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {NgIf} from '@angular/common';
+import {environment} from '../../environments/environment';
 
 interface LabseqResponse {
   result: string;
 }
 
 @Component({
-  selector: 'app-labseq',
+  selector: ' app-labseq',
   imports: [ReactiveFormsModule, NgIf, FormsModule],
   templateUrl: './labseq.component.html',
   styleUrl: './labseq.component.css'
@@ -26,9 +27,11 @@ export class LabseqComponent {
 
     this.isLoading = true;
 
-    const baseUrl = "http://localhost:8080";
+    console.log('API URL:', environment.apiUrl);
 
-    this.http.get<LabseqResponse>(baseUrl+`/labseq/${queryIndex}`)
+    this.http.get<LabseqResponse>(
+      `${environment.apiUrl}/labseq/${queryIndex}`
+    )
       .subscribe({
         next: (data) => {
           this.calculationResult = data.result;
