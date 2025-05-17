@@ -38,7 +38,7 @@ This will:
 ### Access Points
 
 * Frontend: [http://localhost:4200](http://localhost:4200)
-* Backend API: [http://localhost:8080](http://localhost:8080)
+* Backend API: [http://localhost:8080/labseq](http://localhost:8080/labseq)
 * Swagger UI: [http://localhost:8080/q/swagger-ui](http://localhost:8080/q/swagger-ui)
 * Redis (if needed for inspection): `localhost:6379`
 
