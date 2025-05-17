@@ -1,24 +1,40 @@
-<main>
-  <header class="brand-name">
-  <h1>Labseq sequence calculator</h1>
+<main class="container mt-5">
+  <header class="mb-4 text-center">
+    <h1 class="display-5 text-primary">Labseq Sequence Calculator</h1>
   </header>
-  <section>
-    <form (ngSubmit)="onCalculate()">
-      <input id="labseqIndex"
-             type="text"
-             [formControl]="labseqIndex"
-             placeholder="Insert labseq sequence index" />
-      <button class="primary" type="button">Calculate</button>
+
+  <section class="d-flex justify-content-center align-items-center gap-2 flex-wrap">
+    <form
+      (ngSubmit)="onCalculate()"
+      class="d-flex justify-content-center align-items-center gap-2 flex-wrap"
+    >
+      <input
+        id="labseqIndex"
+        type="text"
+        [formControl]="labseqIndex"
+        class="form-control form-control-lg text-center bg-light"
+        placeholder="Insert labseq sequence index"
+        style="max-width: 300px"
+      />
+      <button type="submit" class="btn btn-primary btn-lg px-4">
+        Calculate
+      </button>
     </form>
   </section>
-  <section class="results">
-    <div *ngIf="isLoading">Loading...</div>
+
+  <section class="results d-flex justify-content-center align-items-center gap-2 flex-wrap">
+    <div *ngIf="isLoading" class="spinner-border text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
 
     <div *ngIf="calculationResult !== null && calculationResult !== undefined">
-      <pre>The index n = {{labseqIndex.value}} has value:</pre>
-      <pre>{{ calculationResult }}</pre>
+      <div class="fs-5 fw-bold">
+        The index n = {{ labseqIndex.value }} has value:
+      </div>
+      <div class="fs-4 text-success text-break">
+        {{ calculationResult }}
+      </div>
     </div>
   </section>
 
 </main>
-
